@@ -1,9 +1,10 @@
 import pygame as pg
 import numpy as np
+import math
 res = width, height = 161, 100
-offset = np.array([2.3 * width, height])//2
+offset = np.array([1.3 * width, height])//2
 max_iter = 30
-zoom = 3.2/height
+zoom = 2.2/height
 class Fractal:
 	def __init__(self, app):
 		self.app = app
@@ -45,13 +46,13 @@ class App:
 	def run(self):
 		while True:
 			self.screen.fill('black')
-			pg.display.flip()
 			
 			self.fractal.run()			
 			[exit() for i in pg.event.get() if i.type == pg.QUIT]
 			self.clock.tick()
 			pg.display.set_caption(f'FPS: {self.clock.get_fps()}')
 
+			pg.display.flip()
 app = App()
 app.run()
 				
