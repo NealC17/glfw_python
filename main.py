@@ -1,10 +1,19 @@
 import pygame as pg
 import numpy as np
 import math
-res = width, height = 161, 100
+
+
+res = width, height = 800, 450 
 offset = np.array([1.3 * width, height])//2
 max_iter = 30
 zoom = 2.2/height
+texture = pg.image.load('images/texture.jpg')
+texture_size = min(texture.get_size()) - 1
+texture_array = pg.surfarray.array3d(texture)
+
+
+
+
 class Fractal:
 	def __init__(self, app):
 		self.app = app
@@ -22,8 +31,8 @@ class Fractal:
 					if abs(z) > 2:
 						break
 					num_iter +=1 
-				col = int(255 * num_iter/max_iter)
-				self.screen_array[x, y] = (col, col, col)
+				col = int(texture_size* num_iter/max_iter)
+				self.screen_array[x, y] = texture_array[col, col]
 	
 	def update(self):
 		self.render()
