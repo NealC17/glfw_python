@@ -3,3 +3,5 @@ cupy
 glfw
 pyopengl
 libstdcxx-ng
+numba
+taichi
